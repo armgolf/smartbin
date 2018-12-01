@@ -1,23 +1,38 @@
-#Import python packages
+#Import python packages/files
+import sbinitialisation; #initialisation script defines all variables.
 
-#Call initialisation script
-#(initialisation script defines all variables).
-sbintialisation.py
+#read the proximity sensor.
+sbinitialisation.proximity_status_1 = sensor1output;
 
-#conditions when Bin_state = 0
-if Proximity_status_1 == 1: #if the door is opened go to binstate 1
-    Bin_state = 1;
+#conditions when bin_state = 0
+#if the door is opened go to binstate 1
+if sbinitialisation.proximity_status_1 == 1:
+    bin_state = 1;
 
-if Item_location_status != 0: #if there is still an item in upper compartments go to binstate 2
-    Bin_state = 2;
+#if there is still an item in upper compartments go to binstate 2
+if sbinitialisation.item_location_status != 0:
+    bin_state = 2;
 
-#conditions when Bin_state = 1
-if Timer_waiting >= 10: #nothing input for 10 seconds.
-    Bin_state = 2;
+#conditions when bin_state = 1
+#nothing input for 10 seconds.
+if timer_waiting >= 10:
+    bin_state = 2;
 
-#conditions when Bin_state = 2
-if Proximity_status_1 == 1:
-    Bin_state = 1;
+#conditions when bin_state = 2
+#if the door is opened go to bin_state 1
+if sbinitialisation.proximity_status_1 == 1:
+    bin_state = 1;
 
-if Item_location_status == 0:
-    Bin_state = 0;
+#if there are no items in the upper compartments go to bin_state0
+if sbinitialisation.item_location_status == 0:
+    bin_state = 0;
+
+#Call functionality based on bin_state.
+if bin_state == 0:
+    import binstatus0.py;
+
+if bin_state == 1:
+    import binstatus1.py;
+
+if bin_state == 2:
+    import binstatus2.py;
