@@ -35,8 +35,5 @@ bin_compartment_4 = 4; #Bin bottom compartment 1 contents (1 to 4)
 
 camera_detection = 0; #Object type from NN
 
-proximity_status_1 = 0; #0 or 1 for the bin door
-proximity_status_2 = 0; #0 or 1 for the item present in the compartment
-
 #Check for present items and update variables
 #Rotate 4 times and update Item_location array.
